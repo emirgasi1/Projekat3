@@ -8,17 +8,16 @@ import { Link } from 'react-router-dom';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#689F38', // Custom primary color
+      main: '#689F38', 
     },
     secondary: {
-      main: '#fff', // Custom secondary color
+      main: '#fff', 
     },
   },
   typography: {
-    fontFamily: 'Roboto, sans-serif', // Custom font family
-    fontSize: 14, // Custom base font size
+    fontFamily: 'Roboto, sans-serif',
+    fontSize: 14, 
   },
-  // Add more customizations as needed
 });
 
 function Home() {
@@ -29,7 +28,7 @@ function Home() {
   };
 
   return (
-    <ThemeProvider theme={theme}> {/* Apply custom theme */}
+    <ThemeProvider theme={theme}> 
       <Grid container spacing={2} className="container1" style={{ padding: "20px", borderRadius: "10px" }}>
         <Grid item xs={12} sm={6} sx={{ display: "flex", justifyContent: "flex-end" }}>
           <img 
@@ -72,7 +71,15 @@ function Home() {
         <Grid container spacing={2}>
           {/* First product */}
           <Grid item xs={12} sm={4}>
-            <Card>
+            <Card 
+              sx={{ 
+                transition: 'transform 0.3s ease-in-out', 
+                '&:hover': {
+                  transform: 'scale(1.02)',
+                },
+                marginBottom: 2
+              }}
+            >
               <Link to="/products">
                 <CardMedia
                   component="img"
@@ -93,7 +100,15 @@ function Home() {
           </Grid>
           {/* Second product */}
           <Grid item xs={12} sm={4}>
-            <Card>
+            <Card 
+              sx={{ 
+                transition: 'transform 0.3s ease-in-out', 
+                '&:hover': {
+                  transform: 'scale(1.02)',
+                },
+                marginBottom: 2
+              }}
+            >
               <Link to="/products">
                 <CardMedia
                   component="img"
@@ -114,7 +129,15 @@ function Home() {
           </Grid>
           {/* Third product */}
           <Grid item xs={12} sm={4}>
-            <Card>
+            <Card 
+              sx={{ 
+                transition: 'transform 0.3s ease-in-out', 
+                '&:hover': {
+                  transform: 'scale(1.02)',
+                },
+                marginBottom: 2
+              }}
+            >
               <Link to="/products">
                 <CardMedia
                   component="img"

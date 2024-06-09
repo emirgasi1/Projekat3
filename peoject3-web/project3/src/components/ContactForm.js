@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { TextField, Button, Box, Typography, Grid } from "@mui/material";
+import { TextField, Button, Box, Typography, Grid, InputAdornment } from "@mui/material";
+import { Person, Email, Phone, Edit } from "@mui/icons-material";
 import "./ContactForm.css";
 
 function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
 
@@ -15,15 +17,13 @@ function ContactForm() {
   useEffect(() => {
     if (isSubmitted) {
       console.log("Form submitted:", formData);
-      // Reset form fields after submission
       setFormData({
         name: "",
         email: "",
+        phone: "",
         message: "",
       });
-      // Reset errors
       setErrors({});
-      // Reset submission status
       setIsSubmitted(false);
     }
   }, [isSubmitted, formData]);
@@ -40,6 +40,7 @@ function ContactForm() {
     let tempErrors = {};
     tempErrors.name = formData.name ? "" : "Name is required";
     tempErrors.email = /\S+@\S+\.\S+/.test(formData.email) ? "" : "Email is not valid";
+    tempErrors.phone = formData.phone ? "" : "Phone number is required";
     tempErrors.message = formData.message ? "" : "Message is required";
     setErrors(tempErrors);
     return Object.values(tempErrors).every((x) => x === "");
@@ -67,6 +68,13 @@ function ContactForm() {
             onChange={handleChange}
             error={Boolean(errors.name)}
             helperText={errors.name}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Person />
+                </InputAdornment>
+              ),
+            }}
           />
         </Grid>
         <Grid item xs={12}>
@@ -78,6 +86,31 @@ function ContactForm() {
             onChange={handleChange}
             error={Boolean(errors.email)}
             helperText={errors.email}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Email />
+                </InputAdornment>
+              ),
+            }}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            fullWidth
+            label="Phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            error={Boolean(errors.phone)}
+            helperText={errors.phone}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Phone />
+                </InputAdornment>
+              ),
+            }}
           />
         </Grid>
         <Grid item xs={12}>
@@ -91,6 +124,13 @@ function ContactForm() {
             helperText={errors.message}
             multiline
             rows={4}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Edit />
+                </InputAdornment>
+              ),
+            }}
           />
         </Grid>
         <Grid item xs={12}>
