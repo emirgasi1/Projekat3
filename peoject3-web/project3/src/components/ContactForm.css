@@ -1,0 +1,44 @@
+/* src/components/ContactForm.css */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+.form-group input.error,
+.form-group textarea.error {
+  border-color: red;
+}
+
+.error-text {
+  color: red;
+  font-size: 0.875rem;
+}
+
+button {
+  background-color: #333;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+/* src/components/ContactForm.css */
+.error-text {
+  color: red;
+  font-size: 0.875rem;
+}

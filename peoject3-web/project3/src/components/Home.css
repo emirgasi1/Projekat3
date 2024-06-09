@@ -1,0 +1,48 @@
+.container1 {
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 100px;
+    display: flex;
+  }
+  
+  
+  
+  .text-container {
+    padding: 0 20px; /* Adjust the padding as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .tekst1 {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  
+  .tekst2 {
+    font-size: 1em;
+    text-align: left;
+    max-width: 400px; /* Adjust the max-width as needed */
+    line-height: 1.5;
+  }
+  
+  .shop-now {
+    margin-top: 20px;
+  }
+  
+  button {
+    background-color: #689F38;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+  }
+  
+  button .fa-shopping-cart {
+    margin-right: 10px;
+  }
+  
