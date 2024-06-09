@@ -99,7 +99,7 @@ function ContactForm() {
             variant="contained"
             color="primary"
             fullWidth
-            sx={{ backgroundColor: '#689F38', color: '#fff' }}
+            sx={{ backgroundColor: '#689F38', color: '#fff', mb: 8 }} // Added margin bottom
           >
             Submit
           </Button>

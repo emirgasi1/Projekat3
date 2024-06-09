@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Box, Typography, Grid, createTheme, ThemeProvider } from "@mui/material";
+import { Box, Typography, Grid, createTheme, ThemeProvider, Button } from "@mui/material";
+import { Link } from 'react-router-dom';
 
 // Define custom theme
 const theme = createTheme({
@@ -22,19 +23,33 @@ function AboutUs() {
   const [info, setInfo] = useState("Fetching data...");
   const [imageSrc, setImageSrc] = useState(null);
   const [storeInfo, setStoreInfo] = useState("");
+  const [buttonConfig, setButtonConfig] = useState(null);
 
   useEffect(() => {
     setTimeout(() => {
-      setStoreInfo("We Are Your Favourite Store");
+      setStoreInfo("We Are Your Favorite Store");
 
       setInfo(
         "At our store, we believe in the importance of community and environmental stewardship. That's why we work closely with local farmers and suppliers who share our values of integrity, sustainability, and social responsibility. Join us in supporting local agriculture and enjoying the freshest, most flavorful products available. Visit our store today and discover the difference of shopping with us!"
       );
 
-      // Za sliku
+      // For the image
       setTimeout(() => {
         setImageSrc("./banner.jpg");
       }, 2000);
+
+      // For the button
+      setButtonConfig(
+        <Button
+          component={Link}
+          to="/products"
+          variant="contained"
+          color="primary"
+          sx={{ marginTop: 2 }}
+        >
+          View Products
+        </Button>
+      );
     }, 2000);
   }, []);
 
@@ -53,6 +68,8 @@ function AboutUs() {
                 {storeInfo}
               </Typography>
               <Typography variant="body1">{info}</Typography>
+              {/* Render button */}
+              {buttonConfig}
             </Box>
           </Box>
         </Grid>
