@@ -2,17 +2,35 @@ import React, { useState } from "react";
 import { Box, Typography, Grid, createTheme, ThemeProvider } from "@mui/material";
 
 function Products() {
-  const [products] = useState([
-    { type: "Beverage", name: "Fresh Coffee", image: "/cofffee.jpg", price: "$10" },
-    { type: "Spread", name: "Cashew Butter", image: "/cashew.jpg", price: "$20" },
-    { type: "Sweetener", name: "Raw Honey", image: "/honey.jpg", price: "$30" },
-    { type: "Snack", name: "Diabetic Cookies", image: "/diabetic.jpg", price: "$40" },
-    { type: "Oil", name: "Juiced Oil", image: "/oil.jpg", price: "$50" },
-    { type: "Grain", name: "Red Chillis", image: "/redchillis.jpg", price: "$60" },
-    { type: "Hygiene", name: "Face Washer", image: "/face.jpg", price: "$70" },
-    { type: "Grain", name: "Pulses", image: "/pulses.jpg", price: "$80" },
-    { type: "Hygiene", name: "Sanitizer", image: "/sanitizer.jpg", price: "$90" },
+  const [products, setProducts] = useState([
+    { type: "Beverage", name: "Fresh Coffee", image: "/cofffee.jpg", price: "$10", count: 0 },
+    { type: "Spread", name: "Cashew Butter", image: "/cashew.jpg", price: "$20", count: 0 },
+    { type: "Sweetener", name: "Raw Honey", image: "/honey.jpg", price: "$30", count: 0 },
+    { type: "Snack", name: "Diabetic Cookies", image: "/diabetic.jpg", price: "$40", count: 0 },
+    { type: "Oil", name: "Juiced Oil", image: "/oil.jpg", price: "$50", count: 0 },
+    { type: "Grain", name: "Red Chillis", image: "/redchillis.jpg", price: "$60", count: 0 },
+    { type: "Hygiene", name: "Face Washer", image: "/face.jpg", price: "$70", count: 0 },
+    { type: "Grain", name: "Pulses", image: "/pulses.jpg", price: "$80", count: 0 },
+    { type: "Hygiene", name: "Sanitizer", image: "/sanitizer.jpg", price: "$90", count: 0 },
   ]);
+
+  const handleIncrement = (index) => {
+    setProducts((prevProducts) => {
+      const updatedProducts = [...prevProducts];
+      updatedProducts[index].count++;
+      return updatedProducts;
+    });
+  };
+
+  const handleDecrement = (index) => {
+    setProducts((prevProducts) => {
+      const updatedProducts = [...prevProducts];
+      if (updatedProducts[index].count > 0) {
+        updatedProducts[index].count--;
+      }
+      return updatedProducts;
+    });
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -41,6 +59,11 @@ function Products() {
                 <Typography variant="body2" sx={{ color: 'gray' }}>{product.type}</Typography>
                 <Typography variant="h6">{product.name}</Typography>
                 <Typography variant="body1" sx={{ color: 'gray' }}>{product.price}</Typography>
+                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: 1 }}>
+                  <button onClick={() => handleDecrement(index)}>-</button>
+                  <Typography variant="h6" sx={{ marginX: 1 }}>{product.count}</Typography>
+                  <button onClick={() => handleIncrement(index)}>+</button>
+                </Box>
               </Box>
             </Grid>
           ))}

@@ -21,11 +21,7 @@ const theme = createTheme({
 });
 
 function Home() {
-  const [count, setCount] = useState(0);
-
-  const increment = () => {
-    setCount(count + 1);
-  };
+  
 
   return (
     <ThemeProvider theme={theme}> 
